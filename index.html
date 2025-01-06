@@ -274,6 +274,55 @@
             <p>Hours: Monday - Friday, 9:00 AM - 6:00 PM EST</p>
         </div>
     </div>
+        <!-- bottom-button.html -->
+<button id="rzp-access-button-bottom" class="access-button">
+    <span class="main-text">BUY NOW</span><br>
+    <span class="offer-text">ONLY ₹197/-</span>
+  </button>
+  
+  <script>
+    var options = {
+      key: "rzp_live_2BYF3wphOILlPF", // Enter your Razorpay Key ID
+      amount: "19700", // Amount in paise (₹197.00 = 19700 paise)
+      currency: "INR",
+      description: "Lifetime Access Offer",
+      image: "https://example.com/image/rzp.jpg", // Replace with a valid image URL
+      prefill: {
+        email: "amitkumar2020grl@gmail.com", // Prefilled email
+        contact: "+919508019871" // Prefilled contact number
+      },
+      theme: {
+        color: "#ff5722", // Customize the theme color
+      },
+      method: {
+        upi: true, // Enable UPI payments
+        card: true, // Enable card payments
+        netbanking: true, // Enable netbanking
+        wallet: true, // Enable wallet payments
+        qr: true, // Enable QR code payments
+      },
+      handler: function (response) {
+        alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+        console.log("Payment Details:", response);
+      },
+      modal: {
+        ondismiss: function () {
+          if (confirm("Are you sure you want to close the payment form?")) {
+            console.log("Checkout form closed by the user.");
+          } else {
+            console.log("User chose to complete the payment.");
+          }
+        }
+      }
+    };
+  
+    var rzp1 = new Razorpay(options);
+  
+    document.getElementById('rzp-access-button-bottom').onclick = function (e) {
+      rzp1.open();
+      e.preventDefault();
+    };
+  </script>
     <footer>
         <p>&copy; 2024 Coding Bundle. All rights reserved.</p>
     </footer>
